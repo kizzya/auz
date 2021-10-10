@@ -1,10 +1,16 @@
+
+
+
+
+
 local Camera = workspace.CurrentCamera
 Holding = false
 function findGoals()
     for i, v in pairs(workspace:GetDescendants()) do
-        if v.Name == 'yeah' then
-            v.Parent = workspace
-            v.Position += Vector3.new(2.623, 1, 0)
+        if v.Name == "Lol" then
+            local lock = "loser"
+            v.Name = lock 
+            v.Parent = game.workspace
         end
     end
 end
@@ -12,7 +18,7 @@ local function findClosestPart(position)
     local closestPart, closestPartMagnitude
     local tmpMagnitude
     for i, v in pairs(workspace:GetChildren()) do
-        if v.Name == 'yeah' then
+        if v.Name == 'loser' then
             if closestPart then
                 tmpMagnitude = (position - v.Position).magnitude
                 if tmpMagnitude < closestPartMagnitude then
@@ -30,18 +36,24 @@ end
 findGoals()
 local UIS = game:GetService('UserInputService')
 UIS.InputBegan:connect(function(Input, GPE)
-    if not GPE and Input.KeyCode == Enum.KeyCode.X then
+    if not GPE and Input.KeyCode == Enum.KeyCode.Q then
         local lookthat = findClosestPart(game.Players.LocalPlayer.Character.Torso.Position)
+        local magnitudee = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - lookthat.Position)
         Holding = true
         repeat
             wait(0.01)
-        Camera.CFrame = CFrame.new(Camera.CFrame.p, lookthat.Position + Vector3.new(0, 40, 0)) 
+            local A_1 = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+            local A_2 = lookthat.Position + Vector3.new(0, 5, 1)
+            local A_3 = "lolll"
+    
+    game.workspace[game.Players.LocalPlayer.Name].Basketball.shoot_event:FireServer(A_1, A_2, "🔥🔥")
+        print(magnitudee)
         until Holding == false
     end
 end)
 
 UIS.InputEnded:connect(function(Input, GPE)
-    if not GPE and Input.KeyCode == Enum.KeyCode.X then
+    if not GPE and Input.KeyCode == Enum.KeyCode.Q then
         Holding = false
     end
 end)

@@ -36,7 +36,7 @@ end
 findGoals()
 local UIS = game:GetService('UserInputService')
 UIS.InputBegan:connect(function(Input, GPE)
-    if not GPE and Input.KeyCode == Enum.KeyCode.Q then
+    if not GPE and Input.KeyCode == Enum.KeyCode.X then
         local lookthat = findClosestPart(game.Players.LocalPlayer.Character.Torso.Position)
         local magnitudee = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - lookthat.Position)
         Holding = true
@@ -53,7 +53,7 @@ UIS.InputBegan:connect(function(Input, GPE)
 end)
 
 UIS.InputEnded:connect(function(Input, GPE)
-    if not GPE and Input.KeyCode == Enum.KeyCode.Q then
+    if not GPE and Input.KeyCode == Enum.KeyCode.X then
         Holding = false
     end
 end)
